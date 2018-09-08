@@ -1,0 +1,168 @@
+{% load static i18n wagtailcore_tags wagtailuserbar wagtailimages_tags widget_tweaks %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>{% block title %}{{ blog_page.title }}{% if blog_page.description %} | {{ blog_page.description }}{% endif %}{% endblock title %}</title>
+    <meta name="description" content="{% block meta_description %}{{ blog_page.search_description }}{% endblock meta_description %}"/>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'freelancer/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="{% static 'freelancer/vendor/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet">
+
+    <!-- Plugin CSS -->
+    <link href="{% static 'freelancer/vendor/magnific-popup/magnific-popup.css' %}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="{% static 'freelancer/css/freelancer.css' %}" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+
+</head>
+
+<body id="page-top">
+{% wagtailuserbar 'bottom-right' %}
+
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg bg-secondary fixed-top text-uppercase" id="mainNav">
+    <div class="container">
+        <a class="navbar-brand js-scroll-trigger" href="#page-top">{{ page.title }}</a>
+        <button class="navbar-toggler navbar-toggler-right text-uppercase bg-primary text-white rounded" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            Menu
+            <i class="fa fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item mx-0 mx-lg-1">
+                    <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#portfolio">Portfolio</a>
+                </li>
+                <li class="nav-item mx-0 mx-lg-1">
+                    <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#about">About</a>
+                </li>
+                <li class="nav-item mx-0 mx-lg-1">
+                    <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#contact">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+{% block content %}
+
+<!-- Header -->
+<header class="masthead bg-primary text-white text-center">
+    <div class="container">
+
+        {% if page.profile_image %}
+          {% image page.profile_image original as profile_image %}
+          <img alt="{{ profile_image.title }}" src="{{ profile_image.url }}" class="img-fluid mb-5 d-block mx-auto rounded-circle">
+        {% else %}
+          <img class="img-fluid mb-5 d-block mx-auto rounded-circle" src="{% static 'freelancer/img/profile.png' %}" alt="">
+        {% endif %}
+
+        <h1 class="text-uppercase mb-0">{{ page.title }}</h1>
+        <hr class="star-light">
+        <h2 class="font-weight-light mb-0">
+            {{ page.subtitle }}
+        </h2>
+    </div>
+</header>
+
+<section class="portfolio" id="portfolio">
+    <div class="container">
+        <h2 class="text-center text-uppercase text-secondary mb-0">Portfolio</h2>
+        <hr class="star-dark mb-5">
+        <div class="row">
+        {% with blocks=self.portfolio %}
+            {% for block in blocks %}
+               {{ block }}
+            {% endfor %}
+        {% endwith %}
+        </div>
+    </div>
+</section>
+
+<!-- About Section -->
+<section class="bg-primary mb-0" id="about">
+    <div class="container">
+        <h2 class="text-center text-uppercase text-white">About</h2>
+        <hr class="star-light mb-5">
+        <div class="row">
+            <div class="col-lg-6 offset-lg-3 lead text-white">
+                {{ self.about_text|richtext }}
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact">
+    <div class="container">
+        <h2 class="text-center text-uppercase text-secondary mb-0">Contact Me</h2>
+        <hr class="star-dark mb-5">
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+
+              <form action="{% pageurl page %}" method="POST" id="contact_form">
+                {% csrf_token %}
+
+                {% for field in form.visible_fields %}
+                    {% if field.label %}
+                      <div class="form-group">
+                        <label>{{ field.label_tag }}</label>
+                        {% render_field field class+="form-control" %}
+                      </div>
+                    {% else %}
+                        {{ field }}
+                        <br>
+                    {% endif %}
+                {% endfor %}
+                <button type="submit" class="btn btn-primary" >Submit</button>
+            </form>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
+
+<div class="copyright py-4 text-center text-white">
+    <div class="container">
+      <p class="m-0 text-center text-white">Made with <span class='text-danger'>❤</span> by <a href="https://blog.michaelyin.info/">MichaelYin</a></p>
+    </div>
+</div>
+
+<!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
+<div class="scroll-to-top d-lg-none position-fixed ">
+    <a class="js-scroll-trigger d-block text-center text-white rounded" href="#page-top">
+        <i class="fa fa-chevron-up"></i>
+    </a>
+</div>
+
+
+<!-- Bootstrap core JavaScript -->
+<script src="{% static 'freelancer/vendor/jquery/jquery.min.js' %}" ></script>
+<script src="{% static 'freelancer/vendor/bootstrap/js/bootstrap.bundle.min.js' %}" ></script>
+
+<!-- Plugin JavaScript -->
+<script src="{% static 'freelancer/vendor/jquery-easing/jquery.easing.min.js' %}" ></script>
+<script src="{% static 'freelancer/vendor/magnific-popup/jquery.magnific-popup.min.js' %}" ></script>
+
+<!-- Custom scripts for this template -->
+<script src="{% static 'freelancer/js/freelancer.js' %}" ></script>
+
+{% block extra_js %}
+{% endblock %}
+
+</body>
+
+</html>

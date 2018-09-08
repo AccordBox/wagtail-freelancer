@@ -1,0 +1,33 @@
+{% extends "freelancer/base.html" %}
+
+{% load static wagtailcore_tags wagtailimages_tags %}
+
+{% block content %}
+
+<header class="masthead bg-primary text-white text-center">
+  <div class="container">
+    <h1 class="font-weight-light mb-0">{{ page.thank_you_text | richtext }}</h1>
+    <p>You will be redirected after <strong id="showtimes"></strong> secs. Or you can just click this
+        <a href="{{ page.url }}" class="text-white"> <strong> link </strong> </a>.</p>
+  </div>
+</header>
+
+{% endblock %}
+
+{% block extra_js %}
+
+  <script type="text/javascript">
+    var t = 5;
+    function showTime(){
+      console.log(t);
+      t -= 1;
+      document.getElementById('showtimes').innerHTML= t;
+      if(t==0){
+        location.href=window.location;
+      }
+      setTimeout("showTime()",1000);
+    }
+    showTime();
+  </script>
+
+{% endblock %}
