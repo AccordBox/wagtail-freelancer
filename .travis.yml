@@ -21,7 +21,7 @@ install:
 
 script:
   # Code style, missing imports, etc
-  - flake8 wagtail_freelancer
+  - flake8
   - isort --check-only --diff --recursive wagtail_freelancer
 
   # Run system checks
