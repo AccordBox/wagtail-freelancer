@@ -1,6 +1,6 @@
 # Wagtail Freelancer
 
-[![Build Status](https://travis-ci.org/michael-yin/wagtail-freelancer.svg?branch=master)](https://travis-ci.org/michael-yin/wagtail-freelancer)
+[![Build Status](https://travis-ci.org/AccordBox/wagtail-freelancer.svg?branch=master)](https://travis-ci.org/AccordBox/wagtail-freelancer)
 
 This project is a combination of [startbootstrap-freelancer](https://github.com/BlackrockDigital/startbootstrap-freelancer) and [Wagtail CMS](https://github.com/wagtail/wagtail), you can use Wagtail StreamField feature to quickly edit the content of the page.
 
