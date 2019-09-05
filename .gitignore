@@ -3,8 +3,6 @@
 *.swp
 /venv/
 /static/
-/media/
-/media.old/
 /tmp/
 /.vagrant/
 /Vagrantfile.local
@@ -13,4 +11,3 @@
 node_modules*
 /None
 *.log
-db.sqlite3
