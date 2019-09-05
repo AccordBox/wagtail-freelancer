@@ -1,16 +1,20 @@
+from __future__ import absolute_import, unicode_literals
+
 from .base import *
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '1&3rqr_6=x*qn93mwg=ao2d(lm9od&q67xi1gayz9wuf9867t#'
+SECRET_KEY = '5+f#!xn=hj^u#=cr9@pz@@5cf7bqf0ymy=8uyfpx_zvxpght3='
 
-# SECURITY WARNING: define the correct hosts in production!
-ALLOWED_HOSTS = ['*'] 
+ADMINS = (
+    ('Michael Yin', 'admin@michaelyin.info'),
+)
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
+ALLOWED_HOSTS = ['*']
 
 try:
     from .local import *

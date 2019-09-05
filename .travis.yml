@@ -11,18 +11,16 @@ sudo: false
 
 env:
   global:
-    - DJANGO_SETTINGS_MODULE=wagtail_freelancer.settings.production
+    - DJANGO_SETTINGS_MODULE=config.settings.dev
 
 install:
   - pip install wheel
   - pip install -r requirements.txt
-  - pip install flake8
-  - pip install isort
 
 script:
   # Code style, missing imports, etc
-  - flake8
-  - isort --check-only --diff --recursive wagtail_freelancer
+  - flake8 wagtail_freelancer
+  - isort --check-only --diff --recursive wagtail_freelancer --skip-glob "*/migrations/*"
 
   # Run system checks
   - python manage.py check
