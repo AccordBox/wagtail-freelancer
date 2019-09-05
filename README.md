@@ -1,12 +1,14 @@
 # Wagtail Freelancer
 
-[![Build Status](https://travis-ci.org/AccordBox/wagtail-freelancer.svg?branch=master)](https://travis-ci.org/AccordBox/wagtail-freelancer)
+This project shows you how to build landing page (portfolio) using StreamField, FormBuilder of Wagtail.
 
-This project is a combination of [startbootstrap-freelancer](https://github.com/BlackrockDigital/startbootstrap-freelancer) and [Wagtail CMS](https://github.com/wagtail/wagtail), you can use Wagtail StreamField feature to quickly edit the content of the page.
+## Live demo
 
-I build this project to help people better understand how StreamField of Wagtail works.
+The live demo is [Wagtail landing page](https://wagtail-landing-page.herokuapp.com/)
 
-You can find more useful resources of Wagtail in my [Wagtail Tutorial Series](https://blog.michaelyin.info/wagtail-tutorials/)
+The admin page of this live demo is [Wagtail admin](https://wagtail-landing-page.herokuapp.com/admin) , you can use `admin:admin` to login and publish articles as you like.
+
+**The database and media files would be reset after a while, so do not be surprised if your article is gone.**
 
 Setup (with Vagrant)
 --------------------
@@ -34,17 +36,6 @@ vagrant ssh
 ./manage.py runserver 0.0.0.0:8000
 
 # Please visit http://127.0.0.1:8000/admin to enter the Wagtail admin to edit the page
-```
-
-### How to use it
-
-### Edit portfolio using StreamField
-
-[![Alt text](https://img.youtube.com/vi/_YMm6sah1F8/0.jpg)](https://www.youtube.com/watch?v=_YMm6sah1F8)
-
-### Edit contact form using Wagtail Form
-
-[![Alt text](https://img.youtube.com/vi/c_ItEbb_Zhw/0.jpg)](https://www.youtube.com/watch?v=c_ItEbb_Zhw)
 
 ### Screenshot
 
