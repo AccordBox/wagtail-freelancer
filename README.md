@@ -2,6 +2,10 @@
 
 This project shows you how to build landing page (portfolio) using StreamField, FormBuilder of Wagtail.
 
+* [How to build a landing page using Wagtail CMS](https://www.accordbox.com/blog/how-build-landing-page-using-wagtail-cms/)
+
+* [How to build contact page in Wagtail](https://www.accordbox.com/blog/how-build-form-page-wagtail/)
+
 ## Live demo
 
 The live demo is [Wagtail landing page](https://wagtail-landing-page.herokuapp.com/)
@@ -10,32 +14,19 @@ The admin page of this live demo is [Wagtail admin](https://wagtail-landing-page
 
 **The database and media files would be reset after a while, so do not be surprised if your article is gone.**
 
-Setup (with Vagrant)
---------------------
-
-We recommend running Wagtail in a virtual machine using Vagrant, to ensure that the correct dependencies are in place.
-
-### Dependencies
- - [VirtualBox](https://www.virtualbox.org/)
- - [Vagrant 1.1+](http://www.vagrantup.com)
-
-### Installation
-
-Run the following commands:
+## Run it in local env
 
 ```bash
 git clone [the url you copied above]
 cd wagtail-freelancer
-vagrant up
-vagrant ssh
 
-# then, within the SSH session:
+# setup virtualenv
+pip install -r requirements.txt
 
-./manage.py migrate
-./manage.py createsuperuser
-./manage.py runserver 0.0.0.0:8000
-
-# Please visit http://127.0.0.1:8000/admin to enter the Wagtail admin to edit the page
+./manage.py runserver
+# http://127.0.0.1:8000/blog
+# username: admin  password: admin
+```
 
 ### Screenshot
 
