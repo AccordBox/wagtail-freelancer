@@ -33,4 +33,4 @@ WORKDIR /app
 COPY . .
 
 # Run application
-CMD ["sh", "config/docker_start.sh"]
+CMD ["sh", "docker_start.sh"]
